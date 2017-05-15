@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5870CB7DEE11B0A1379B38DE /* Pods_MyChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7539525C69FA82C1F6F3E2BA /* Pods_MyChatUITests.framework */; };
+		C63531881EC949CD0055E17A /* telegram.png in Resources */ = {isa = PBXBuildFile; fileRef = C63531871EC949CD0055E17A /* telegram.png */; };
 		C656C39B1EC4645600EFAF01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C656C39A1EC4645600EFAF01 /* GoogleService-Info.plist */; };
 		C6DE89471E9F72E600B41A94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE89461E9F72E600B41A94 /* AppDelegate.swift */; };
 		C6DE89491E9F72E600B41A94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE89481E9F72E600B41A94 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		3606D3B93FDE65BFD405830C /* Pods_MyChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7539525C69FA82C1F6F3E2BA /* Pods_MyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD25FAC05ED4615934FE1955 /* Pods-MyChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyChatTests/Pods-MyChatTests.release.xcconfig"; sourceTree = "<group>"; };
+		C63531871EC949CD0055E17A /* telegram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = telegram.png; sourceTree = "<group>"; };
 		C656C39A1EC4645600EFAF01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6DE89431E9F72E600B41A94 /* MyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DE89461E9F72E600B41A94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				C6DE89461E9F72E600B41A94 /* AppDelegate.swift */,
 				C6DE894A1E9F72E600B41A94 /* Main.storyboard */,
 				C6DE894D1E9F72E600B41A94 /* Assets.xcassets */,
+				C63531871EC949CD0055E17A /* telegram.png */,
 				C6DE894F1E9F72E600B41A94 /* LaunchScreen.storyboard */,
 				C6DE89521E9F72E600B41A94 /* Info.plist */,
 				C656C39A1EC4645600EFAF01 /* GoogleService-Info.plist */,
@@ -296,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6DE89511E9F72E600B41A94 /* LaunchScreen.storyboard in Resources */,
+				C63531881EC949CD0055E17A /* telegram.png in Resources */,
 				C656C39B1EC4645600EFAF01 /* GoogleService-Info.plist in Resources */,
 				C6DE894E1E9F72E600B41A94 /* Assets.xcassets in Resources */,
 				C6DE894C1E9F72E600B41A94 /* Main.storyboard in Resources */,
@@ -331,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0887678D9032704D60529B47 /* [CP] Check Pods Manifest.lock */ = {
@@ -346,7 +350,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		64B3A1756316D380DB0B180F /* [CP] Copy Pods Resources */ = {
@@ -421,7 +425,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FBCA69866A022EB502791ED7 /* [CP] Copy Pods Resources */ = {
