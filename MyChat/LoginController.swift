@@ -40,14 +40,14 @@ class LoginController: UIViewController {
     }()
     
     func handleLogin() {
-        guard let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text else {
+        guard let email = emailTextfield.text, let password = passwordTextfield.text, let _ = nameTextfield.text else {
             print("invalid form")
             return
         }
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: {(user,error) in
             
             if error != nil {
-                print(error)
+                print(error!)
                 return
             }
             self.dismiss(animated: true, completion: nil)
@@ -60,37 +60,6 @@ class LoginController: UIViewController {
         } else {
             handleRegister()
         }
-    }
-    
-    func handleRegister() {
-        print(123)
-        guard let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text else {
-            print("invalid form")
-            return
-        }
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: {(user:FIRUser?, error) in
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            guard let uid = user?.uid else {
-                return
-            }
-            
-            var ref: FIRDatabaseReference!
-            ref = FIRDatabase.database().reference(fromURL: "https://mychat-60681.firebaseio.com/")
-            let userReference = ref.child("users").child(uid)
-            let values = ["name":name,"email":email]
-            userReference.updateChildValues(values, withCompletionBlock: { (err,ref) in
-                if err != nil {
-                    print(err!)
-                    return
-                }
-                self.dismiss(animated: true, completion: nil)
-                print("save user successful")
-            })
-        })
     }
     
     let nameTextfield: UITextField = {
@@ -136,11 +105,13 @@ class LoginController: UIViewController {
         return view
     }()
     
-    let profileImageView: UIImageView = {
+    lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "telegram")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImage)))
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -189,7 +160,6 @@ class LoginController: UIViewController {
         passwordTextFieldHeightAnchor?.isActive = true
         
         
-        
         //change the height of input container view
         
     }
@@ -209,6 +179,8 @@ class LoginController: UIViewController {
         profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
+    
+
     
     func setupContainerView() {
         //need x,y,width,height constraint
