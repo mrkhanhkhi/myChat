@@ -11,13 +11,18 @@ import Firebase
 
 extension LoginController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    
     func handleRegister() {
-        print(123)
+        print("Register")
+        
+        //Handle register process
         guard let email = emailTextfield.text, let password = passwordTextfield.text, let name = nameTextfield.text else {
             print("invalid form")
             return
         }
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: {(user:FIRUser?, error) in
+            
+            //check items if blank or not
             if error != nil {
                 print(error!)
                 return
@@ -26,14 +31,21 @@ extension LoginController: UIImagePickerControllerDelegate,UINavigationControlle
             guard let uid = user?.uid else {
                 return
             }
+            
+            //create a reference to Firebase storage
             let imageName = NSUUID().uuidString
             let storageRef = FIRStorage.storage().reference().child("\(imageName).png")
-            if let uploadData = UIImagePNGRepresentation(self.profileImageView.image!) {
-                storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
-                    if error != nil {
-                        print(error!)
-                        return
+            
+            
+            //upload the image to storage
+                    if let profileImage = self.profileImageView.image, let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+                        storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                            if error != nil {
+                                print(error!)
+                                return
                     }
+                    
+                    //return the object from result and register user to database.
                     if let profileImageURL = metadata?.downloadURL()?.absoluteString {
                         let values = ["name":name,"email":email, "profileImageUrl":profileImageURL]
                         self.registerUserIntoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
@@ -53,6 +65,7 @@ extension LoginController: UIImagePickerControllerDelegate,UINavigationControlle
                 print(err!)
                 return
             }
+            self.messageController?.fetchUserAndSetupNavBarTitle()
             self.dismiss(animated: true, completion: nil)
             print("save user successful")
         })

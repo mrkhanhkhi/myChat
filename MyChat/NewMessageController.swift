@@ -51,17 +51,7 @@ class NewMessageController: UITableViewController {
         cell.detailTextLabel?.text = user.email
         
         if let profileImageURL = user.profileImageUrl {
-            let url = URL(string: profileImageURL)
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                DispatchQueue.main.async {
-                    cell.profileImageView.image = UIImage(data: data!)
-                }
-            }).resume()
+            cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: profileImageURL)
         }
         return cell
     }
