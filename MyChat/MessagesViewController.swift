@@ -11,12 +11,30 @@ import Firebase
 
 class MessagesViewController: UITableViewController {
 
+    var messages = [Message]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let image = UIImage(named: "modify")
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogOut))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
         checkIfUserLoggedIn()
+        observeMessages()
+    }
+    
+    func observeMessages() {
+        let ref = FIRDatabase.database().reference().child("messages")
+        ref.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String:AnyObject] {
+                print(snapshot)
+                let message = Message()
+                message.setValuesForKeys(dictionary)
+                self.messages.append(message)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }, withCancel: nil)
     }
     
     func checkIfUserLoggedIn () {
@@ -81,17 +99,19 @@ class MessagesViewController: UITableViewController {
         
         
         self.navigationItem.titleView = titleView
-        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
+//        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
         
     }
     
-    func showChatController() {
+    func showChatController(user:User) {
         let chatLogControlelr = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatLogControlelr.user = user
         navigationController?.pushViewController(chatLogControlelr, animated: true)
     }
     
     func handleNewMessage() {
         let newMessageController = NewMessageController()
+        newMessageController.messageController = self
         let navController = UINavigationController(rootViewController: newMessageController)
         present(navController, animated: true, completion: nil)
     }
@@ -107,5 +127,26 @@ class MessagesViewController: UITableViewController {
         loginController.messageController = self
         present(loginController, animated: true, completion: nil)
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
+        let message = messages[indexPath.row]
+        if let toID = message.toID {
+            let ref = FIRDatabase.database().reference().child("user").child(toID)
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String:AnyObject] {
+                    cell.textLabel?.text = dictionary["name"] as? String
+                }
+                print(snapshot.value)
+            }, withCancel: nil)
+        }
+        return cell
+    }
 }
+
+
 
