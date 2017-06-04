@@ -10,6 +10,7 @@
 		1C2914A51EE128D9003F3349 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2914A41EE128D9003F3349 /* Messages.swift */; };
 		5870CB7DEE11B0A1379B38DE /* Pods_MyChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7539525C69FA82C1F6F3E2BA /* Pods_MyChatUITests.framework */; };
 		84355D8D1ED2367B00CE95F1 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84355D8C1ED2367B00CE95F1 /* ChatLogController.swift */; };
+		845163091EE4ABFB006DE52C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845163081EE4ABFB006DE52C /* UserCell.swift */; };
 		C63531881EC949CD0055E17A /* telegram.png in Resources */ = {isa = PBXBuildFile; fileRef = C63531871EC949CD0055E17A /* telegram.png */; };
 		C656C39B1EC4645600EFAF01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C656C39A1EC4645600EFAF01 /* GoogleService-Info.plist */; };
 		C6A9541B1ECD40D600EAB181 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A9541A1ECD40D600EAB181 /* Extension.swift */; };
@@ -52,6 +53,7 @@
 		3606D3B93FDE65BFD405830C /* Pods_MyChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7539525C69FA82C1F6F3E2BA /* Pods_MyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84355D8C1ED2367B00CE95F1 /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		845163081EE4ABFB006DE52C /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		AD25FAC05ED4615934FE1955 /* Pods-MyChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyChatTests/Pods-MyChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		C63531871EC949CD0055E17A /* telegram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = telegram.png; sourceTree = "<group>"; };
 		C656C39A1EC4645600EFAF01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8451630A1EE4AC00006DE52C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				845163081EE4ABFB006DE52C /* UserCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		C6A954191ECD40C600EAB181 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +174,7 @@
 		C6DE89451E9F72E600B41A94 /* MyChat */ = {
 			isa = PBXGroup;
 			children = (
+				8451630A1EE4AC00006DE52C /* View */,
 				C6A954191ECD40C600EAB181 /* Helpers */,
 				C6FF55FE1ECC00E300120C56 /* Model */,
 				C6DE89741E9F74CA00B41A94 /* Controller */,
@@ -507,6 +518,7 @@
 				C6DE89491E9F72E600B41A94 /* MessagesViewController.swift in Sources */,
 				C6DE89761E9F74FD00B41A94 /* LoginController.swift in Sources */,
 				C6FF55FD1ECC00DE00120C56 /* User.swift in Sources */,
+				845163091EE4ABFB006DE52C /* UserCell.swift in Sources */,
 				C6DE89471E9F72E600B41A94 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
