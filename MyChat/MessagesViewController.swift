@@ -12,6 +12,8 @@ import Firebase
 class MessagesViewController: UITableViewController {
 
     var messages = [Message]()
+    var messageDictionary = [String:Message]()
+    
     let cellID = "cellID"
     
     override func viewDidLoad() {
@@ -31,7 +33,14 @@ class MessagesViewController: UITableViewController {
                 print(snapshot)
                 let message = Message()
                 message.setValuesForKeys(dictionary)
-                self.messages.append(message)
+                if let toID = message.toID {
+                    self.messageDictionary[toID] = message
+                    self.messages = Array(self.messageDictionary.values)
+                    self.messages.sort(by: { (m1, m2) -> Bool in
+                        return m1.timeStamp?.intValue > m2.timeStamp?.intValue
+                    })
+                }
+               
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
